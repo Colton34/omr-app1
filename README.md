@@ -1,16 +1,111 @@
-# omr
+# OMRScan - Make your exam grading process simple
 
-A new Flutter project.
+A mobile app that lets you scan and grade OMR sheets quickly.
 
-## Getting Started
+## Features
+* Scan multiple OMR sheets at once.
+* Handle multiple subjects through single app.
+* Store all results in a downloadable format.
+* Rescan of same paper won't create unnecessary documents.
+* Change actual answers of question paper anytime.
+* Easy re-evaluation process.
 
-This project is a starting point for a Flutter application.
+## Built With
+* Flutter SDK
+* Firebase
+* OpenCV
+* AWS Lambda, S3, EFS
 
-A few resources to get you started if this is your first Flutter project:
+## Prerequisites
+* Android Studio
+* Flutter
+* Android Emulator
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## How to Use 
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+**Step 1:**
+Download or clone this repo by using the link below:
+
+```
+https://github.com/sharmajsr/omr-app1.git
+```
+
+**Step 2:**
+Go to project root and execute the following command in console to get the required dependencies: 
+
+``` 
+flutter pub get 
+```
+
+**Step 3:**
+Open the project in Android Studio
+ 
+ 
+## Screenshots
+
+<div align="center">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><code>Dashboard</code></th>
+<th style="text-align:center"><code>Add Subject</code></th>
+<th style="text-align:center"><code>Options Page</code></th>
+
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="https://github.com/sharmajsr/omr-app1/blob/master/screens/WhatsApp%20Image%202020-11-22%20at%208.46.53%20PM.jpeg" height = "500px"/></td>
+<td style="text-align:center"><img src="https://github.com/sharmajsr/omr-app1/blob/master/screens/Screenshot_2020-11-22-20-32-44-194_com.example.omr.jpg" height = "500px"/></td>
+ <td style="text-align:center"><img src="https://github.com/sharmajsr/omr-app1/blob/master/screens/WhatsApp%20Image%202020-11-22%20at%208.46.54%20PM%20(1).jpeg" height = "500px"/></td>  
+ 
+</tr>
+</tbody>
+</table>
+
+
+<table>
+<thead>
+<tr>
+
+<th style="text-align:center"><code>Add Question Paper </code></th>  
+  <th style="text-align:center"><code>Upload Answer Sheets </code></th>
+<th style="text-align:center"><code>Result Lisy </code></th>
+
+</tr>
+</thead>
+<tbody>
+<tr>
+  
+  <td style="text-align:center"><img src="https://github.com/sharmajsr/omr-app1/blob/master/screens/WhatsApp%20Image%202020-11-22%20at%208.46.52%20PM.jpeg" height = "500px"/></td>
+  <td style="text-align:center"><img src="https://github.com/sharmajsr/omr-app1/blob/master/screens/WhatsApp%20Image%202020-11-22%20at%208.46.54%20PM.jpeg" height = "500px"/>
+  <td style="text-align:center"><img src="https://github.com/sharmajsr/omr-app1/blob/master/screens/WhatsApp%20Image%202020-11-22%20at%208.46.52%20PM%20(1).jpeg" height = "500px"/></td>
+
+  
+  
+</tr>
+</tbody>
+</table>
+
+
+<table>
+<thead>
+<tr>
+
+<th style="text-align:center"><code>Result Details </code></th>  
+
+
+</tr>
+</thead>
+<tbody>
+<tr>
+  
+  <td style="text-align:center"><img src="https://github.com/sharmajsr/omr-app1/blob/master/screens/WhatsApp%20Image%202020-11-22%20at%208.46.51%20PM.jpeg" height = "500px"/></td>
+  
+
+  
+  
+</tr>
+</tbody>
+</table>
+</div>
