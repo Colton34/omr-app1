@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "938496595846",
+    "firebase_url": "https://omr-project-5ebac.firebaseio.com",
+    "project_id": "omr-project-5ebac",
+    "storage_bucket": "omr-project-5ebac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:938496595846:android:8535763ee3c994828ebe07",
+        "android_client_info": {
+          "package_name": "com.example.omr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "938496595846-r5a8mea38oi57g896ktekcaroqbddjn0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCf6zOkrtpDqD__JnMcYI3qfWcKHdsYFUE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "938496595846-r5a8mea38oi57g896ktekcaroqbddjn0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
