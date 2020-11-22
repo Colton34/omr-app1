@@ -1,3 +1,5 @@
+To see the model used in this application [Click here](https://github.com/suryakamalog/omr-model)
+
 # OMRScan - Make your exam grading process simple
 
 A mobile app that lets you scan and grade OMR sheets quickly.
