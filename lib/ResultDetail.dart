@@ -26,7 +26,7 @@ class _ResultDetailsState extends State<ResultDetails> {
     return Scaffold(
       appBar: AppBar(
           backgroundColor: ColorsUtils.SecondaryColor,
-          title: Text("Result Details")),
+          title: Text("Result Details",style: GoogleFonts.lato(color:Colors.white),)),
       body: ListView.builder(
         itemBuilder: (context, i) {
           print(widget.response["options"]["${i + 1}"]);

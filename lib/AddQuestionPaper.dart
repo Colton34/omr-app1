@@ -1,5 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:omr/OptionsPage.dart';
 import 'package:omr/color_utils.dart';
 
@@ -23,11 +24,7 @@ class _AddQuestionPaperState extends State<AddQuestionPaper> {
     // TODO: implement initState
     super.initState();
     if (widget.questionPaper != null) actualAnswers = widget.questionPaper;
-    for (int i = 0; i < actualAnswers.length; i++) {
-      if (actualAnswers[i] == "null") {
-        actualAnswers[i] = "";
-      }
-    }
+
   }
 
   Future<void> addQuestions() async {
@@ -43,7 +40,7 @@ class _AddQuestionPaperState extends State<AddQuestionPaper> {
         .set(questions)
         .then((value) => {
               //Navigator.pop(context)
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
                     builder: (context) => OptionsPage(widget.subjectCode)),
@@ -56,7 +53,7 @@ class _AddQuestionPaperState extends State<AddQuestionPaper> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorsUtils.SecondaryColor,
-        title: Text('Add Question Paper'),
+        title: Text('Add Question Paper',style: GoogleFonts.lato(color:Colors.white),),
         actions: [
           InkWell(
               onTap: () {
@@ -86,7 +83,7 @@ class _AddQuestionPaperState extends State<AddQuestionPaper> {
                         Flexible(
                           child: TextField(
                             controller: TextEditingController()
-                              ..text = this.actualAnswers[index + 1],
+                              ..text = this.actualAnswers[index + 1]== "null"? "" : this.actualAnswers[index + 1],
                             // keyboardType: TextInputType.number,
                             decoration: new InputDecoration(
                               hintText: "",
@@ -115,7 +112,7 @@ class _AddQuestionPaperState extends State<AddQuestionPaper> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   onPressed: addQuestions,
-                  color: Color(0xff3CB371),
+                  color:ColorsUtils.SecondaryColor,
                   child: Text(
                     "Submit",
                     style: TextStyle(

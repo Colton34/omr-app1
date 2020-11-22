@@ -33,7 +33,7 @@ class _ResultListState extends State<ResultList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Result List"),
+        title: Text("Result List",style: GoogleFonts.lato(color:Colors.white),),
         backgroundColor: ColorsUtils.SecondaryColor,
       ),
       body: FirebaseAnimatedList(
@@ -97,6 +97,7 @@ class _ResultListState extends State<ResultList> {
               //print("$i ${widget.questions[i]} ${snapshot.value[i]}");
               testData["options"]["$i"] = data;
             }
+            testData["roll"] = roll;
             testData["totalMarks"] = totalMarks;
             testData["correctChoice"] = correctChoice;
             //print("Roll : $roll \n TestData : ${testData}");

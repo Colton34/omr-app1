@@ -1,5 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:omr/color_utils.dart';
 
 class AddSubjects extends StatefulWidget {
@@ -25,7 +26,7 @@ class _AddSubjectsState extends State<AddSubjects> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorsUtils.SecondaryColor,
-        title: Text("Add Subject"),
+        title: Text("Add Subject",style: GoogleFonts.lato(color:Colors.white),),
       ),
       body: Container(
         color: Colors.white,
@@ -199,7 +200,7 @@ class _AddSubjectsState extends State<AddSubjects> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   onPressed: addSubject,
-                  color: Color(0xff3CB371),
+                  color: ColorsUtils.SecondaryColor,
                   child: Text(
                     "Submit",
                     style: TextStyle(

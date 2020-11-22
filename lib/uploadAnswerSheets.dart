@@ -2,6 +2,7 @@ import 'dart:ffi';
 import 'dart:io';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
@@ -40,13 +41,19 @@ class _UploadAnswerSheetsState extends State<UploadAnswerSheets> {
   Widget buildGridView() {
     if (images != null)
       return GridView.count(
+       // padding: const EdgeInsets.all(2.0),
         crossAxisCount: 3,
+        mainAxisSpacing: 5.0,
+        crossAxisSpacing: 5.0,
         children: List.generate(images.length, (index) {
           Asset asset = images[index];
-          return AssetThumb(
-            asset: asset,
-            width: 300,
-            height: 300,
+          return Container(
+            decoration: BoxDecoration( border: Border.all(color: Colors.black)),
+            child: AssetThumb(
+              asset: asset,
+              width: 300,
+              height: 300,
+            ),
           );
         }),
       );
@@ -160,70 +167,73 @@ class _UploadAnswerSheetsState extends State<UploadAnswerSheets> {
     return Scaffold(
       appBar: new AppBar(
         backgroundColor: ColorsUtils.SecondaryColor,
-        title: const Text('Upload Answer Sheets'),
+        title:  Text('Upload Answer Sheets',style: GoogleFonts.lato(color:Colors.white),),
       ),
       body: ModalProgressHUD(
         progressIndicator: CircularProgressIndicator(),
         inAsyncCall: _saving,
-        child: Container(
-          child: Column(
-            children: <Widget>[
-              Expanded(
-                child: buildGridView(),
-              ),
-              Row(
-                children: [
-                  Flexible(
-                    child: Padding(
-                      padding: EdgeInsets.all(25.0),
-                      child: SizedBox(
-                        width: double.infinity,
-                        height: 60,
-                        child: RaisedButton(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          onPressed: loadAssets,
-                           color: ColorsUtils.SecondaryColor,
-                          child: Text(
-                            "Pick Images",
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontFamily: "Helvetica",
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Flexible(
-                    child: Padding(
-                      padding: EdgeInsets.all(25.0),
-                      child: SizedBox(
-                        width: double.infinity,
-                        height: 60,
-                        child: RaisedButton(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          onPressed: _submit,
-                          color: ColorsUtils.SecondaryColor,
-                          child: Text(
-                            "Submit",
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontFamily: "Helvetica",
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            child: Column(
+              children: <Widget>[
+                Expanded(
+                  child: buildGridView(),
+                ),
+                Row(
+                  children: [
+                    Flexible(
+                      child: Padding(
+                        padding: EdgeInsets.all(25.0),
+                        child: SizedBox(
+                          width: double.infinity,
+                          height: 60,
+                          child: RaisedButton(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            onPressed: loadAssets,
+                             color: ColorsUtils.SecondaryColor,
+                            child: Text(
+                              "Pick Images",
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontFamily: "Helvetica",
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                    Flexible(
+                      child: Padding(
+                        padding: EdgeInsets.all(25.0),
+                        child: SizedBox(
+                          width: double.infinity,
+                          height: 60,
+                          child: RaisedButton(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            onPressed: _submit,
+                            color: ColorsUtils.SecondaryColor,
+                            child: Text(
+                              "Submit",
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontFamily: "Helvetica",
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

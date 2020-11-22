@@ -29,49 +29,53 @@ class _ViewSubjectsState extends State<ViewSubjects> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorsUtils.SecondaryColor,
-        title: Text('Dashboard'),
+
+        title: Text('Dashboard',style: GoogleFonts.lato(color:Colors.white),),
       ),
-      body: FirebaseAnimatedList(
-          query: databaseReference.child("subjects/"),
-          itemBuilder:
-              (_, DataSnapshot snapshot, Animation<double> animation, int x) {
-            //print("Key : ${snapshot.key} \n Value : ${snapshot.value}");
-            return InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => OptionsPage(snapshot.key)),
-                );
-              },
-              child: Card(
-                  //Color(Random().nextInt(0xffffffff)).withAlpha(0xff),
-                  //color:  Colors.primaries[Random().nextInt(Colors.primaries.length)],
-                  color: colors[x % colors.length],
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('${snapshot.value["subjectName"]}',
-                            style: GoogleFonts.lato(
-                                fontSize: 20, color: Colors.white)),
-                        Text(
-                          '${snapshot.key}',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Text(
-                          '${snapshot.value["subjectTeacher"]}',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ],
-                    ),
-                  )),
-            );
-          }),
+      body: Padding(
+        padding: const EdgeInsets.only(top:5.0),
+        child: FirebaseAnimatedList(
+            query: databaseReference.child("subjects/"),
+            itemBuilder:
+                (_, DataSnapshot snapshot, Animation<double> animation, int x) {
+              //print("Key : ${snapshot.key} \n Value : ${snapshot.value}");
+              return InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => OptionsPage(snapshot.key)),
+                  );
+                },
+                child: Card(
+                    //Color(Random().nextInt(0xffffffff)).withAlpha(0xff),
+                    //color:  Colors.primaries[Random().nextInt(Colors.primaries.length)],
+                    color: colors[x % colors.length],
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('${snapshot.value["subjectName"]}',
+                              style: GoogleFonts.lato(
+                                  fontSize: 20, color: Colors.white)),
+                          Text(
+                            '${snapshot.key}',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            '${snapshot.value["subjectTeacher"]}',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    )),
+              );
+            }),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(

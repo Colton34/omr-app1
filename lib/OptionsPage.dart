@@ -1,5 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:omr/AddQuestionPaper.dart';
 import 'package:omr/ResultList.dart';
 import 'package:omr/color_utils.dart';
@@ -36,7 +37,7 @@ class _OptionsPageState extends State<OptionsPage> {
   }
 
   addQuestionPaper() {
-    Navigator.push(
+    Navigator.pushReplacement(
       context,
       MaterialPageRoute(
           builder: (context) => AddQuestionPaper(widget.subjectCode,questionsList)),
@@ -82,7 +83,7 @@ class _OptionsPageState extends State<OptionsPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorsUtils.SecondaryColor,
-        title: Text('Options Page'),
+        title: Text('Options Page',style: GoogleFonts.lato(color:Colors.white),),
       ),
       body: Column(
         children: [
