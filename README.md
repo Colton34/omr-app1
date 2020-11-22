@@ -75,7 +75,7 @@ Open the project in Android Studio
 
 <th style="text-align:center"><code>Add Question Paper </code></th>  
   <th style="text-align:center"><code>Upload Answer Sheets </code></th>
-<th style="text-align:center"><code>Result Lisy </code></th>
+<th style="text-align:center"><code>Result List </code></th>
 
 </tr>
 </thead>
