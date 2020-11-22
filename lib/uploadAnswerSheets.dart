@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'dart:async';
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:flutter_absolute_path/flutter_absolute_path.dart';
@@ -25,7 +26,7 @@ class _UploadAnswerSheetsState extends State<UploadAnswerSheets> {
   final databaseReference = FirebaseDatabase.instance.reference();
   final String imageUploadEndPoint =
       'https://lem0tksic9.execute-api.us-east-1.amazonaws.com/default/upload';
-
+  bool _saving = false;
   List<Asset> images = List<Asset>();
   File ansFile;
   String _error = "No error";
@@ -115,6 +116,10 @@ class _UploadAnswerSheetsState extends State<UploadAnswerSheets> {
 //  }
 
   _submit() async {
+    _saving=true;
+    setState(() {
+
+    });
     Map<dynamic, dynamic> myResponse = new Map();
     print("inside submit");
     const headers = {'Content-Type': 'application/jpg'};
@@ -146,6 +151,8 @@ class _UploadAnswerSheetsState extends State<UploadAnswerSheets> {
         //print("Body ${json.decode(response.body)['body']['roll']}");
       }
     }
+    _saving=false;
+    Navigator.pop(context);
   }
 
   @override
@@ -155,65 +162,69 @@ class _UploadAnswerSheetsState extends State<UploadAnswerSheets> {
         backgroundColor: ColorsUtils.SecondaryColor,
         title: const Text('Upload Answer Sheets'),
       ),
-      body: Container(
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              child: buildGridView(),
-            ),
-            Row(
-              children: [
-                Flexible(
-                  child: Padding(
-                    padding: EdgeInsets.all(25.0),
-                    child: SizedBox(
-                      width: double.infinity,
-                      height: 60,
-                      child: RaisedButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        onPressed: loadAssets,
-                         color: ColorsUtils.SecondaryColor,
-                        child: Text(
-                          "Pick Images",
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontFamily: "Helvetica",
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Flexible(
-                  child: Padding(
-                    padding: EdgeInsets.all(25.0),
-                    child: SizedBox(
-                      width: double.infinity,
-                      height: 60,
-                      child: RaisedButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        onPressed: _submit,
-                        color: ColorsUtils.SecondaryColor,
-                        child: Text(
-                          "Submit",
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontFamily: "Helvetica",
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
+      body: ModalProgressHUD(
+        progressIndicator: CircularProgressIndicator(),
+        inAsyncCall: _saving,
+        child: Container(
+          child: Column(
+            children: <Widget>[
+              Expanded(
+                child: buildGridView(),
+              ),
+              Row(
+                children: [
+                  Flexible(
+                    child: Padding(
+                      padding: EdgeInsets.all(25.0),
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: 60,
+                        child: RaisedButton(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          onPressed: loadAssets,
+                           color: ColorsUtils.SecondaryColor,
+                          child: Text(
+                            "Pick Images",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontFamily: "Helvetica",
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                  Flexible(
+                    child: Padding(
+                      padding: EdgeInsets.all(25.0),
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: 60,
+                        child: RaisedButton(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          onPressed: _submit,
+                          color: ColorsUtils.SecondaryColor,
+                          child: Text(
+                            "Submit",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontFamily: "Helvetica",
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

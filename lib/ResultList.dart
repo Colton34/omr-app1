@@ -50,7 +50,21 @@ class _ResultListState extends State<ResultList> {
             //print("Length of Questions List ${widget.questions.length}");
             Map<dynamic, dynamic> testData = {};
             testData["options"] = {};
-            for (int i = 0; i < widget.questions.length; i++) {
+            print("Length : ${widget.questions.length}");
+            print("Ans Length : ${answers.length}");
+            for (int i = 1; i < widget.questions.length ; i++) {
+
+              if(i +1 > answers.length )
+                {
+                  Map  data = {
+                    "correctChoice" : "${widget.questions[i]}",
+                    "selectedChoice": "None",
+                    "answerOutcome" : "Unanswered"
+                  };
+                  testData["options"]["$i"] = data;
+                  continue;
+                }
+              print(i);
              // if (!snapshot.key.contains("$i")) {
               //  print("Roll $roll None : $i");
 //                Map data = {

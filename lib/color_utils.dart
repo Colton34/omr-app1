@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ColorsUtils{
 //  static final Color PrimaryColor = HexColor("#00BE74"); //
   static final Color PrimaryColor =HexColor('#357627');
-  static final Color SecondaryColor = HexColor('#3CB371');
+  static final Color SecondaryColor = Color(0xff3498eb);
 //  static final Color SecondaryColor = HexColor("#ABB0B6");
   static final Color BottomColor = HexColor("#ff0000");
   static final Color Black          = HexColor("#181818");

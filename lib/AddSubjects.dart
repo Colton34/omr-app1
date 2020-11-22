@@ -1,5 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:omr/color_utils.dart';
 
 class AddSubjects extends StatefulWidget {
   @override
@@ -23,6 +24,7 @@ class _AddSubjectsState extends State<AddSubjects> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: ColorsUtils.SecondaryColor,
         title: Text("Add Subject"),
       ),
       body: Container(

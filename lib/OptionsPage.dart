@@ -4,7 +4,7 @@ import 'package:omr/AddQuestionPaper.dart';
 import 'package:omr/ResultList.dart';
 import 'package:omr/color_utils.dart';
 import 'package:omr/uploadAnswerSheets.dart';
-
+import 'package:fluttertoast/fluttertoast.dart';
 class OptionsPage extends StatefulWidget {
   String subjectCode;
 
@@ -39,7 +39,7 @@ class _OptionsPageState extends State<OptionsPage> {
     Navigator.push(
       context,
       MaterialPageRoute(
-          builder: (context) => AddQuestionPaper(widget.subjectCode)),
+          builder: (context) => AddQuestionPaper(widget.subjectCode,questionsList)),
     );
   }
 
@@ -52,6 +52,19 @@ class _OptionsPageState extends State<OptionsPage> {
                 ResultList(widget.subjectCode, questionsList)),
       );
     } else {
+
+//      Fluttertoast.showToast(
+//          msg: "This is Center Short Toast",
+//          toastLength: Toast.LENGTH_SHORT,
+//          gravity: ToastGravity.CENTER,
+//
+//          backgroundColor: Colors.red,
+//          textColor: Colors.white,
+//          fontSize: 16.0
+//      );
+//      setState(() {
+//
+//      });
       print("Add Question Paper ");
     }
   }
@@ -83,8 +96,8 @@ class _OptionsPageState extends State<OptionsPage> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
-                onPressed: resultList,
-                color: Color(0xff3CB371),
+                onPressed: questionsList ==null ? null :resultList,
+                color: ColorsUtils.SecondaryColor,
                 child: Text(
                   "View Result",
                   style: TextStyle(
@@ -107,7 +120,7 @@ class _OptionsPageState extends State<OptionsPage> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 onPressed: addAnswerScrips,
-                color: Color(0xff3CB371),
+                color:ColorsUtils.SecondaryColor,
                 child: Text(
                   "Upload Answer Sheets",
                   style: TextStyle(
@@ -130,7 +143,7 @@ class _OptionsPageState extends State<OptionsPage> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 onPressed: addQuestionPaper,
-                color: Color(0xff3CB371),
+                color:ColorsUtils.SecondaryColor,
                 child: Text(
                   "Add Question Paper",
                   style: TextStyle(

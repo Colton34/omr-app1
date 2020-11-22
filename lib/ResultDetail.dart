@@ -12,8 +12,8 @@ class ResultDetails extends StatefulWidget {
 }
 
 class _ResultDetailsState extends State<ResultDetails> {
+  TextStyle textStyle = GoogleFonts.lato();
 
-  TextStyle textStyle =GoogleFonts.lato();
   @override
   void initState() {
     // TODO: implement initState
@@ -29,15 +29,22 @@ class _ResultDetailsState extends State<ResultDetails> {
           title: Text("Result Details")),
       body: ListView.builder(
         itemBuilder: (context, i) {
-          print(widget.response["options"]["${i+1}"]);
-          return  widget.response["options"]["${i+1}"] ==null ?  Container() :questionCard(i+1,widget.response["options"]["${i+1}"]["correctChoice"],widget.response["options"]["${i+1}"]["selectedChoice"],widget.response["options"]["${i+1}"]["answerOutcome"] );
+          print(widget.response["options"]["${i + 1}"]);
+          return widget.response["options"]["${i + 1}"] == null
+              ? Container()
+              : questionCard(
+                  i + 1,
+                  widget.response["options"]["${i + 1}"]["correctChoice"],
+                  widget.response["options"]["${i + 1}"]["selectedChoice"],
+                  widget.response["options"]["${i + 1}"]["answerOutcome"]);
         },
-        itemCount: widget.response["options"].length ,
+        itemCount: widget.response["options"].length,
       ),
     );
   }
-  questionCard(int questionNo,String correctOption,String selectedOption,String verdict)
-  {
+
+  questionCard(int questionNo, String correctOption, String selectedOption,
+      String verdict) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
@@ -48,10 +55,10 @@ class _ResultDetailsState extends State<ResultDetails> {
             //mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Q $questionNo',style:textStyle),
-              Text('Correct Choice : $correctOption',style:textStyle),
-              Text('Selected Choice : $selectedOption',style:textStyle),
-              Text('Outcome : $verdict',style:textStyle)
+              Text('Q $questionNo', style: textStyle),
+              Text('Correct Choice : $correctOption', style: textStyle),
+              Text('Selected Choice : $selectedOption', style: textStyle),
+              Text('Outcome : $verdict', style: textStyle)
             ],
           ),
         ),

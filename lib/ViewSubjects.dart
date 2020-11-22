@@ -19,7 +19,6 @@ class _ViewSubjectsState extends State<ViewSubjects> {
     Color(0xff6b34eb),
     Color(0xffbd2020),
     Color(0xff915e3f),
-    Color(0xff3498eb),
     Color(0xffb8a9a0),
     Color(0xff913368)
 
