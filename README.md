@@ -21,6 +21,9 @@ A mobile app that lets you scan and grade OMR sheets quickly.
 * Flutter
 * Android Emulator
 
+## Architecture
+![Architecture](https://github.com/sharmajsr/omr-app1/blob/master/screens/arch.png)
+
 ## How to Use 
 
 **Step 1:**
