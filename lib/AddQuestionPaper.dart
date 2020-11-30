@@ -16,16 +16,22 @@ class AddQuestionPaper extends StatefulWidget {
 
 class _AddQuestionPaperState extends State<AddQuestionPaper> {
   final databaseReference = FirebaseDatabase.instance.reference();
-  List<dynamic> actualAnswers = List(30);
+  List<int> actualAnswers = List(30);
   int questionsCount = 20;
+  int _radioVal = 0;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    if (widget.questionPaper != null) actualAnswers = widget.questionPaper;
+    if (widget.questionPaper != null)
+     for(int i =  0 ; i  < widget.questionPaper.length ; i++)
+       {
+         if(widget.questionPaper[i] == "1"  || widget.questionPaper[i] == "0" || widget.questionPaper[i] == "2" ||widget.questionPaper[i] == "3" )
+         actualAnswers[i] = int.parse(widget.questionPaper[i]);
+       }
 
-  }
+     }
 
   Future<void> addQuestions() async {
     Map<dynamic, dynamic> questions = {};
@@ -53,7 +59,10 @@ class _AddQuestionPaperState extends State<AddQuestionPaper> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorsUtils.SecondaryColor,
-        title: Text('Add Question Paper',style: GoogleFonts.lato(color:Colors.white),),
+        title: Text(
+          'Add Question Paper',
+          style: GoogleFonts.lato(color: Colors.white),
+        ),
         actions: [
           InkWell(
               onTap: () {
@@ -79,18 +88,25 @@ class _AddQuestionPaperState extends State<AddQuestionPaper> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       //crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Flexible(child: Text("Q ${index + 1}")),
+                        Text("Q ${index + 1}"),
                         Flexible(
-                          child: TextField(
-                            controller: TextEditingController()
-                              ..text = this.actualAnswers[index + 1]== "null"? "" : this.actualAnswers[index + 1],
-                            // keyboardType: TextInputType.number,
-                            decoration: new InputDecoration(
-                              hintText: "",
-                            ),
-                            onChanged: (text) {
-                              this.actualAnswers[index + 1] = text;
-                            },
+                          child:
+
+                              Row(
+                            children: [0, 1, 2, 3]
+                                .map(
+                                  (int i) => Radio<int>(
+                                    value: i,
+                                    groupValue: this.actualAnswers[index + 1],
+                                    onChanged: (int value) {
+                                      setState(() {
+                                        this.actualAnswers[index + 1] = value;
+                                        print("Actual Answers : ${actualAnswers}");
+                                      });
+                                    },
+                                  ),
+                                )
+                                .toList(),
                           ),
                         ),
                         //Text('A')
@@ -112,7 +128,7 @@ class _AddQuestionPaperState extends State<AddQuestionPaper> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   onPressed: addQuestions,
-                  color:ColorsUtils.SecondaryColor,
+                  color: ColorsUtils.SecondaryColor,
                   child: Text(
                     "Submit",
                     style: TextStyle(

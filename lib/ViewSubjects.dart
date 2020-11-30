@@ -33,7 +33,7 @@ class _ViewSubjectsState extends State<ViewSubjects> {
         title: Text('Dashboard',style: GoogleFonts.lato(color:Colors.white),),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top:5.0),
+        padding: const EdgeInsets.all(5.0),
         child: FirebaseAnimatedList(
             query: databaseReference.child("subjects/"),
             itemBuilder:
